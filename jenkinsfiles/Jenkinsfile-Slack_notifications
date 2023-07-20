@@ -1,0 +1,21 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Slack notification') {
+            steps {
+                slackSend color: 'good', failOnError: true, iconEmoji: 'thumbsup', message: 'Hello, the build was a success'
+            }
+        }
+        stage('File creation') {
+            steps {
+                sh 'echo Hello from jenkins > hello.txt'
+            }
+        }
+        stage('Upload file') {
+            steps {
+                slackUploadFile filePath: 'hello.txt', initialComment: 'This is a file from slack'
+            }
+        }
+    }
+}

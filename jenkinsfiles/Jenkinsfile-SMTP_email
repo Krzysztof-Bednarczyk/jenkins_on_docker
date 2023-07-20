@@ -1,0 +1,10 @@
+pipeline {
+    agent any 
+    stages {
+        stage('Send e-mail') {
+            steps {
+                emailext attachLog: true, body: '', subject: '', to: 'krisu876@gmail.com'
+            }
+        }
+    }
+}

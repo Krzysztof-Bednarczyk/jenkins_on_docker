@@ -1,0 +1,14 @@
+pipeline {
+    agent any 
+    stages {
+        stage('Stage 1') {
+            steps {
+                script{
+                    def username = 'Jenkins'
+                    echo 'Hello from ${username} - single quotes' 
+                    echo "I said, hello from ${username} - double quotes"
+                }
+            }
+        }
+    }
+}

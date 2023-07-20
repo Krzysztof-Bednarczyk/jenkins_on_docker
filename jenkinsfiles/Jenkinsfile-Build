@@ -1,0 +1,21 @@
+pipeline {
+    agent any 
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Hello world! I\'m building the application' 
+            }
+        }
+        stage('Trigger test job') {
+            steps {
+                echo 'Triggering test job' 
+                build 'Test job'
+            }
+        }
+        stage('Completion') {
+            steps {
+                echo 'Completed testing' 
+            }
+        }
+    }
+}

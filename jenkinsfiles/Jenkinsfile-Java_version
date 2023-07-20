@@ -1,0 +1,17 @@
+pipeline {
+    agent {label 'slave'}
+    tools {
+        jdk 'openjdk-16.0.1_linux-aarch64'
+    }
+    stages {
+        stage('Hello') {
+            steps {
+                sh '''
+                env | grep -e PATH -e JAVA_HOME
+                which java
+                java -version
+                '''
+            }
+        }
+    }
+}
